@@ -54,6 +54,14 @@ var webpackConfig = {
         test: /.s[c|a]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
         include: [resolve('demo')]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: path.join('assets', '[name].[ext]')
+        }
       }
     ]
   },
