@@ -1,7 +1,7 @@
 {
   "name": "vue-immutable",
   "description": "A immutable data plugin for Vue.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "hamger <2313303800@qq.com>",
   "license": "MIT",
   "scripts": {
