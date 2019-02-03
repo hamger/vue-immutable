@@ -4,10 +4,13 @@ const utils = require('./utils')
 const resolve = utils.resolve
 
 var webpackConfig = {
+  target: 'web',
   entry: './src/index.js',
   output: {
     filename: 'vue-immutable.min.js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    library: 'vue-immutable',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
