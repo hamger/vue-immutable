@@ -18,6 +18,14 @@
     "plugin",
     "immutable"
   ],
+  "homepage": "https://github.com/hamger/vue-immutable",
+  "bugs": {
+    "url": "https://github.com/hamger/vue-immutable/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamger/vue-immutable.git"
+  },
   "devDependencies": {
     "annotate-webpack-plugin": "^0.1.1",
     "babel-core": "^6.26.0",
