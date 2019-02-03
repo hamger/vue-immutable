@@ -48,11 +48,8 @@ vue-immutable 作为 vue 插件，使用方式和其他插件一致：`Vue.use(p
 options 是一个对象，接受如下属性：
 
 - immutable：选填，immutable 数据在 vue 实例中的映射，默认值为 `immutable`
-- data：选填，供全局消费的 immutable 数据
 
 > 同名的响应式数据会覆盖 immutable 数据
-
-> 局部的 immutable 数据会覆盖全局的 immutable 数据
 
 ## Development Setup
 

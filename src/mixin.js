@@ -1,4 +1,5 @@
-export default function (Vue, map) {
+export default function (Vue, options) {
+  let map = options.immutable || 'immutable'
   const version = Number(Vue.version.split('.')[0])
 
   if (version >= 2) {

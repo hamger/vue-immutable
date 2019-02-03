@@ -1,7 +1,8 @@
 import applyMixin from './mixin'
 
 function install (Vue, options = {}) {
-  applyMixin(Vue, options.immutable || 'immutable')
+  if (options instanceof Object) applyMixin(Vue, options)
+  else throw Error(`vue-immutable: options must be a object.`)
 }
 
 export default {
