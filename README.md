@@ -36,7 +36,7 @@ new Vue({
   export default {
     name: "App",
     immutable: {
-      hello: "hello"
+      hello: "hello",
       name() {
         return 'vue-immutable'
       }
