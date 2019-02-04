@@ -20,18 +20,25 @@ export default function (Vue, options) {
    * VueImmutable init hook, injected into each instances init hooks list.
    */
   function vueImmutableInit () {
-    const immutable = this.$options.immutable
+    const options = this.$options
+    this[map] = {}
     // immutable injection
+    if (options.parent && options.parent.$options.immutable) {
+      this[map] = shallowCopy(options.parent.$options.immutable)
+    }
+    const immutable = options.immutable
     if (immutable) {
-      this[map] = {}
-      for (let key in immutable) {
-        let val = immutable[key]
-        if (typeof val === 'function') {
-          this[map][key] = val.call(this)
-        } else {
-          this[map][key] = val
-        }
-      }
+      for (let k in immutable) this[map][k] = immutable[k]
+    }
+    const _immutable = options._immutable
+    if (_immutable) {
+      for (let k in _immutable) this[map][k] = _immutable[k]
     }
   }
+}
+
+function shallowCopy (a) {
+  var b = {}
+  for (let k in a) b[k] = a[k]
+  return b
 }

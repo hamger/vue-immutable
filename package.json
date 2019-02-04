@@ -9,7 +9,8 @@
     "build": "webpack --config build/webpack.prod.conf.js",
     "start": "npm run dev",
     "tonpm": "npm run build && npm version patch && npm publish",
-    "test": "karma start"
+    "test": "karma start",
+    "docs": "docsify serve docs"
   },
   "main": "dist/vue-immutable.min.js",
   "keywords": [

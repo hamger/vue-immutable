@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <h1>{{ i.hello }}</h1>
-    <h1>{{ i.name }}</h1>
+    <el-hello></el-hello>
+    <h1>{{ i.now() }}</h1>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "App",
-    immutable: {
-      hello: "hello",
-      name() {
-        return 'vue-immutable'
-      }
+import Hello from './Hello.vue'
+
+export default {
+  name: "App",
+  immutable: {
+    root: "App",
+    now() {
+      return Date.now()
     }
-  };
+  },
+  _immutable: {
+    now() {
+      return new Date()
+    }
+  },
+  components: {
+    'el-hello': Hello
+  },
+};
 </script>
 
 <style lang="scss" scope>

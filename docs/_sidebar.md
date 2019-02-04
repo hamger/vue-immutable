@@ -1,0 +1,3 @@
+- [start](/start.md)
+- [meaning](/meaning.md)
+- [other](/other.md)
