@@ -1,4 +1,4 @@
-## Instrall
+## Install
 
 使用 npm 安装： `npm install vue-immutable`
 
@@ -21,7 +21,7 @@ new Vue({
 });
 ```
 
-```html
+```vue
 // App.vue
 <template>
   <div id="app">

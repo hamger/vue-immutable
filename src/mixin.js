@@ -24,21 +24,16 @@ export default function (Vue, options) {
     this[map] = {}
     // immutable injection
     if (options.parent && options.parent.$options.immutable) {
-      this[map] = shallowCopy(options.parent.$options.immutable)
+      shallowCopy(this[map], options.parent.$options.immutable)
     }
     const immutable = options.immutable
-    if (immutable) {
-      for (let k in immutable) this[map][k] = immutable[k]
-    }
+    if (immutable) shallowCopy(this[map], immutable)
     const _immutable = options._immutable
-    if (_immutable) {
-      for (let k in _immutable) this[map][k] = _immutable[k]
-    }
+    if (_immutable) shallowCopy(this[map], _immutable)
   }
 }
 
-function shallowCopy (a) {
-  var b = {}
+function shallowCopy (b, a) {
   for (let k in a) b[k] = a[k]
   return b
 }

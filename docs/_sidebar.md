@@ -1,3 +1,4 @@
 - [start](/start.md)
 - [meaning](/meaning.md)
-- [other](/other.md)
+- [usage](/usage.md)
+- [theory](/theory.md)

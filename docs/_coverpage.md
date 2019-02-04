@@ -6,4 +6,4 @@
 * optimize for immutable data in Vue.js
 
 [GitHub](https://github.com/vue-immutable/)
-[Get Started](/quickstart.md)
+[Get Started](/start.md)

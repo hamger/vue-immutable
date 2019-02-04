@@ -2,19 +2,53 @@
 
 A immutable data plugin for Vue.js
 
+
 ## Meaning
 
 在编写 vue 代码的过程中，经常会遇到需要在模板中渲染一些不会改变的变量，由于需要在放到模板中，我们常常把这个变量放到 data 属性中，vue 会对  data 中的数据进行观察，这样便会造成不必要的性能消耗，尤其是当不变的数据较多且复杂时。因此有必要实现一种模式，既能跳过 vue 的观察机制，又能使变量可以在 vue 模板中被使用，vue-immutable 由此诞生 ，优化 vue 对 immutable 数据的处理。
 
-## Document
+## Install
 
-vue-immutable 作为 vue 插件，使用方式和其他插件一致：`Vue.use(plugin, options)`。
+使用 npm 安装： `npm install vue-immutable`
 
-options 是一个对象，接受如下属性：
+使用 yarn 安装： `yarn add vue-immutable`
 
-- immutable：选填，immutable 数据在 vue 实例中的映射，默认值为 `immutable`
+## Start
 
-> 同名的响应式数据会覆盖 immutable 数据
+```js
+// main.js
+import Vue from "vue";
+import App from "./App.vue";
+import Immutable from "vue-immutable";
+
+Vue.use(Immutable);
+
+new Vue({
+  el: "#app",
+  components: { App },
+  template: "<App/>"
+});
+```
+
+```html
+// App.vue
+<template>
+  <div id="app">
+    <h1>{{ immutable.msg }}</h1>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "App",
+    immutable: {
+      msg: "hello world",
+    }
+  };
+</script>
+```
+
+## [Document](https://hamger.github.io/vue-immutable/)
 
 ## Development Setup
 
