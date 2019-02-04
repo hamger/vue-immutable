@@ -68,7 +68,7 @@ npm run test
 
 ## Changelog
 
-### 2019.2.3
+### 2019.2.4
 
 > v0.1.3 实现 immutable 数据继承
 
