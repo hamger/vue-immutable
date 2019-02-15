@@ -5,5 +5,5 @@
 * simple and lightweight
 * optimize for immutable data in Vue.js
 
-[GitHub](https://github.com/vue-immutable/)
+[GitHub](https://github.com/hamger/vue-immutable)
 [Get Started](/start.md)
