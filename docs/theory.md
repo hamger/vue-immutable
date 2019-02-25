@@ -5,7 +5,7 @@ vue-immutable 需要实现两点：
 
 我们知道 vue 的 template 中的 this 指向 vue 实例，因此只要将 immutable 数据挂在 vue 实例上，就可以实现在模板中访问到 immutable 数据。
 
-那么如何将 immutable 数据挂到 vue 实例上呢？通过阅读源码可知，实例的配置项都会被收集在 `vm.$options` 中，也就是说，在实例的配置项中加入的`immutable`属性，可以通过`vm.$options.immutable`被访问到，如以下代码：
+那么如何将 immutable 数据挂到 vue 实例上呢？通过阅读 Vue 文档可知，实例的配置项都会被收集在 `vm.$options` 中，也就是说，在实例的配置项中加入的`immutable`属性，可以通过`vm.$options.immutable`被访问到，如以下代码：
 ```vue
 <template>
   <div>
