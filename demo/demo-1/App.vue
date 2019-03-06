@@ -12,6 +12,9 @@ export default {
   name: "App",
   immutable: {
     root: "App",
+    a: {
+      b: 3
+    },
     now() {
       return Date.now()
     }

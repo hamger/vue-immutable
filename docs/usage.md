@@ -13,6 +13,8 @@ options 是一个对象，选填，接受如下属性：
 
 - immutable：选填，immutable 数据在 vue 实例中的映射，默认值为 `immutable`
 
+- deep：选填，immutable 数据在继承时是否使用深拷贝，默认值为 `false`
+
 > 同名的响应式数据会覆盖映射后的 immutable 数据
 
 ## 在 vue 实例中

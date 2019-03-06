@@ -5,7 +5,8 @@ import App from './App.vue'
 import Immutable from '@'
 
 Vue.use(Immutable, {
-  immutable: 'i'
+  immutable: 'i',
+  deep: true
 })
 
 /* eslint-disable no-new */

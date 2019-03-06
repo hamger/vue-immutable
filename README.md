@@ -68,6 +68,10 @@ npm run test
 
 ## Changelog
 
+### 2019.3.6
+
+> v0.1.4 添加插件配置项 deep 
+
 ### 2019.2.4
 
 > v0.1.3 实现 immutable 数据继承

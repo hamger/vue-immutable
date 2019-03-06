@@ -14,6 +14,8 @@
     },
     created () {
       console.log(this.i)
+      this.i.a.b = 5
+      console.log(this.$parent.i.a.b)
     }
   };
 </script>
