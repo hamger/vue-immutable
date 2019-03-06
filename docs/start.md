@@ -4,7 +4,7 @@
 
 使用 yarn 安装： `yarn add vue-immutable`
 
-## Usage
+## Demo
 
 ```js
 // main.js
