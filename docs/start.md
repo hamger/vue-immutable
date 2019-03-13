@@ -16,6 +16,9 @@ Vue.use(Immutable);
 
 new Vue({
   el: "#app",
+  immutable: {
+    msg: "hello world",
+  },
   components: { App },
   template: "<App/>"
 });
@@ -25,16 +28,7 @@ new Vue({
 // App.vue
 <template>
   <div id="app">
-    <h1>{{ immutable.msg }}</h1>
+    <h1>{{ $immutable.msg }}</h1>
   </div>
 </template>
-
-<script>
-  export default {
-    name: "App",
-    immutable: {
-      msg: "hello world",
-    }
-  };
-</script>
 ```

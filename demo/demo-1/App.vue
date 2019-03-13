@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-hello></el-hello>
-    <h1>{{ i.now() }}</h1>
+    <h1>{{ 'app: ' + $i.now() }}</h1>
   </div>
 </template>
 
@@ -10,20 +10,6 @@ import Hello from './Hello.vue'
 
 export default {
   name: "App",
-  immutable: {
-    root: "App",
-    a: {
-      b: 3
-    },
-    now() {
-      return Date.now()
-    }
-  },
-  _immutable: {
-    now() {
-      return new Date()
-    }
-  },
   components: {
     'el-hello': Hello
   },

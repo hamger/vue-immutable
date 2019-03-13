@@ -1,12 +1,5 @@
 export default function (Vue, options) {
-  const map = options.immutable || 'immutable'
-  let copy = options.deep ?
-    (child, parent) => {
-      Object.assign(child, deepCopy(parent))
-    } :
-    (child, parent) => {
-      Object.assign(child, parent)
-    }
+  const map = options.immutable || '$immutable'
 
   const version = Number(Vue.version.split('.')[0])
 
@@ -29,31 +22,14 @@ export default function (Vue, options) {
    */
   function vueImmutableInit () {
     const options = this.$options
-    this[map] = {}
     // immutable injection
-    if (options.parent && options.parent.$options.immutable) {
-      copy(this[map], options.parent.$options.immutable)
+    if (options.immutable) {
+      this[map] =
+        typeof options.immutable === 'function' ?
+          options.immutable() :
+          options.immutable
+    } else if (options.parent && options.parent[map]) {
+      this[map] = options.parent[map]
     }
-    const immutable = options.immutable
-    if (immutable) copy(this[map], immutable)
-    const _immutable = options._immutable
-    if (_immutable) copy(this[map], _immutable)
   }
-}
-
-function deepCopy (obj) {
-  let target = {}
-  Reflect.ownKeys(obj).forEach(key => {
-    const val = obj[key]
-    // avoid loop import, just like: obj.key = obj
-    if (val === obj) return
-    target[key] = isObject(val) ? deepCopy(val) : val
-  })
-  return target
-}
-
-function isObject (o) {
-  return (
-    Object.prototype.toString.call(o).replace(/\[object\s|\]/g, '') === 'Object'
-  )
 }

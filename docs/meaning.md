@@ -1,40 +1,96 @@
-在编写 vue 代码的过程中，需要在模板中渲染数据，这些数据是不会改变的，我们会把这些数据放到 data 属性中：
+## 诞生场景
+
+数据展示的时候，考虑某些数据不存在的情况，需要展示一个默认的文本，且这个默认的文本在所有组件中都是一致的，你可能会这么写。
+
+```js
+// a.js
+export { nothing: '--' }
+```
+
 ```vue
+// App.vue
 <template>
   <div id="app">
-    <h1>{{ who }}</h1>
+    <ul>
+      <li v-for="item in list" :key="item.id">
+        {{ item.name }} 的年龄为 {{ item.age || nothing }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-var name = 'tom'
+import { nothing } from "a.js";
+
 export default {
   name: "App",
-  data () {
+  data() {
     return {
-      who: name,
-    }
+      nothing: nothing,
+      list: [
+        {
+          id: 1,
+          name: "Tom",
+          age: 23
+        },
+        {
+          id: 2,
+          name: "Mary",
+          age: ""
+        }
+      ]
+    };
   }
 };
 </script>
 ```
-以上代码自然是可以达到目的的，但 vue 会对 data 中的数据进行观察，我们知道这些数据是不会变的，这样便会造成将「数据」转换为「响应式对象」的性能开销，尤其是当这些数据较多且复杂时。因此有必要实现一种模式，既能跳过 vue 的观察机制，又能使变量可以在 vue 模板中被使用，vue-immutable 由此诞生，旨在优化 vue 对 immutable 数据的处理。
 
-使用 vue-immutable 后可以改写为以下形式：
-```vue
+## 使用 Vuex
+但是以上写法存在一个问题，对于每一个组件都需要引入`a.js`，且还需要将数据放到 data 属性里，很是繁琐，这时你可能会想到使用 Vuex
+。
+
+```
+// App.vue
 <template>
   <div id="app">
-    <h1>{{ immutable.who }}</h1>
+    <ul>
+      <li v-for="item in list" :key="item.id">
+        {{item.name}} 的年龄为 {{item.age || $store.state.nothing}}
+      </li>
+    </ul>
   </div>
 </template>
-
-<script>
-export default {
-  name: "App",
-  immutable: {
-    who: 'tom'
-  }
-};
-</script>
 ```
-对于不变化的数据不再需要放在 data 中，从而节省了 vue 数据观察的消耗。
+
+## 使用 vue-immutable
+确实使用 Vuex 就不需要每次都去引入`a.js`了，但是这里大材小用了，Vuex 主要是用来处理可变的全局变量，它会将「数据」转换为「响应式对象」，这个过程存在性能开销，尤其是当这些数据较多且复杂时。vue-immutable 由此诞生，使用 vue-immutable 后既可以使数据被全局共享，也可以避免「数据」转换为「响应式对象」的性能开销。
+
+```js
+// main.js
+import Vue from "vue";
+import App from "./App.vue";
+import Immutable from "vue-immutable";
+
+Vue.use(Immutable);
+
+new Vue({
+  el: "#app",
+  // 在根实例注册 immutable 数据，可被全局共享
+  immutable: { nothing: "--" },
+  components: { App },
+  template: "<App/>"
+});
+```
+
+```vue
+// App.vue
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="item in list" :key="item.id">
+        {{ item.name }} 的年龄为 {{ item.age || $immutable.nothing }}
+      </li>
+    </ul>
+  </div>
+</template>
+```

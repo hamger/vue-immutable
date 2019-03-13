@@ -5,7 +5,7 @@ A immutable data plugin for Vue.js
 
 ## Meaning
 
-在编写 vue 代码的过程中，经常会遇到需要在模板中渲染一些不会改变的变量，由于需要在放到模板中，我们常常把这个变量放到 data 属性中，vue 会对  data 中的数据进行观察，这样便会造成将「数据」转换为「响应式对象」的性能开销，尤其是当这些数据较多且复杂时。因此有必要实现一种模式，既能跳过 vue 的观察机制，又能使变量可以在 vue 模板中被使用，vue-immutable 由此诞生 ，优化 vue 对 immutable 数据的处理，并支持 immutable 数据的继承。
+在编写 vue 代码的过程中，经常会遇到需要在模板中渲染一些不会改变的变量，由于需要在放到模板中，我们常常把这个变量放到 data 属性中，vue 会对  data 中的数据进行观察，这样便会造成将「数据」转换为「响应式对象」的性能开销，尤其是当这些数据较多且复杂时。因此有必要实现一种模式，既能跳过 vue 的观察机制，又能使变量可以在 vue 模板中被使用，vue-immutable 由此诞生 ，优化 vue 对 immutable 数据的处理，immutable 数据将被全局消费。
 
 ## Install
 
@@ -34,7 +34,7 @@ new Vue({
 // App.vue
 <template>
   <div id="app">
-    <h1>{{ immutable.msg }}</h1>
+    <h1>{{ $immutable.msg }}</h1>
   </div>
 </template>
 
@@ -67,6 +67,10 @@ npm run test
 ```
 
 ## Changelog
+
+### 2019.3.13
+
+> v0.2.0 数据继承采用引用模式，废弃拷贝模式
 
 ### 2019.3.6
 

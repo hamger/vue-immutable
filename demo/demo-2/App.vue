@@ -1,14 +1,29 @@
 <template>
   <div id="app">
-    <h1>{{ immutable.author }}</h1>
+    <ul>
+      <li v-for="item in list" :key="item.id">{{item.name}} 的年龄为 {{item.age || $immutable}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
-  immutable: {
-    author: "hanger"
+  data() {
+    return {
+      list: [
+        {
+          id: 1,
+          name: "Tom",
+          age: 23
+        },
+        {
+          id: 2,
+          name: "Mary",
+          age: ""
+        }
+      ]
+    };
   }
 };
 </script>

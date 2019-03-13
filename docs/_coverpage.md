@@ -1,4 +1,4 @@
-# vue-immutable <small>0.1.3</small>
+# vue-immutable <small>0.2.0</small>
 
 > A immutable data plugin for Vue.js.
 

@@ -2,6 +2,7 @@ vue-immutable 需要实现两点：
 
 1. 能在 vue 模板中被访问到
 2. 跳过 vue 的观察机制
+3. 可以被全局共享
 
 我们知道 vue 的 template 中的 this 指向 vue 实例，因此只要将 immutable 数据挂在 vue 实例上，就可以实现在模板中访问到 immutable 数据。
 
@@ -24,30 +25,24 @@ vue-immutable 需要实现两点：
 ```
 这样就实现了第一点，因为 vue 不会对除 data 和 props 之外的数据进行观察，所以也就实现了第二点。
 
-但是使用`$options.immutable`有些太麻烦了，所以需要做一下代理，此时可以定制映射关系，我们在 vue 的生命周期`beforeCreate`中混入我们的操作：
+但是使用`$options.immutable`有些麻烦，所以需要做一下代理，此时可以定制映射关系，我们在 vue 的生命周期`beforeCreate`中混入我们的操作：
 ```js
 // map 为设置的映射值
-this[map] = {}
 const immutable = this.$options.immutable
-if (immutable) shallowCopy(this[map], immutable)
-
-function shallowCopy (b, a) {
-  for (let k in a) b[k] = a[k]
-  return b
-}
+if (immutable) this[map] = immutable
 ```
 此后就可以使用`map.key`代替`$options.immutable.key`了。
 
-至此我们就已经实现了基本功能了，但是现在 immutable 数据还无法被继承，要实现继承，需要将父实例的 immutable 数据传子实例，需要拓展在`beforeCreate`中混入的操作：
+然后我们来实现第三点，这里可以直接使用 Vuex 中的写法，将子实例的`map`属性指向父实例的`map`属性即可，需要拓展在`beforeCreate`中混入的操作：
 ```js
 const options = this.$options
-this[map] = {}
-if (options.parent && options.parent.$options.immutable) {
-  shallowCopy(this[map], options.parent.$options.immutable)
+if (options.immutable) {
+  this[map] =
+    typeof options.immutable === 'function' ?
+      options.immutable() :
+      options.immutable
+} else if (options.parent && options.parent[map]) {
+  this[map] = options.parent[map]
 }
-const immutable = options.immutable
-if (immutable) shallowCopy(this[map], immutable)
-const _immutable = options._immutable
-if (_immutable) shallowCopy(this[map], _immutable)
 ```
-这样就实现了 immutable 数据可以被继承，同时创建 _immutable 数据只供自身消费。
+在根实例上挂载 immutable 属性，这样就实现了 immutable 数据的全局共享。

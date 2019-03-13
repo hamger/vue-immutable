@@ -5,13 +5,19 @@ import App from './App.vue'
 import Immutable from '@'
 
 Vue.use(Immutable, {
-  immutable: 'i',
-  deep: true
+  immutable: '$i'
 })
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  immutable () {
+    return {
+      now () {
+        return Date.now()
+      }
+    }
+  },
   components: { App },
   template: '<App/>'
 })
