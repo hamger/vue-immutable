@@ -69,9 +69,9 @@ export default {
 // main.js
 import Vue from "vue";
 import App from "./App.vue";
-import Immutable from "vue-immutable";
+import vueImmutable from "vue-immutable";
 
-Vue.use(Immutable);
+Vue.use(vueImmutable);
 
 new Vue({
   el: "#app",

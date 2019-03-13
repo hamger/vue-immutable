@@ -4,16 +4,16 @@ const utils = require('./utils')
 const resolve = utils.resolve
 
 var webpackConfig = {
-  target: 'web',
   entry: './src/index.js',
   output: {
     filename: 'vue-immutable.min.js',
     path: path.resolve(__dirname, '../dist'),
-    library: 'vue-immutable',
-    libraryTarget: 'umd'
+    library: 'vueImmutable',
+    libraryTarget: 'umd', // 采用通用模块定义
+    libraryExport: 'default', // 兼容 ES6(ES2015) 的模块系统、CommonJS 和 AMD 模块规范
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ['.js'],
     alias: {
       '@': path.resolve(__dirname, '../src')
     }
@@ -24,11 +24,6 @@ var webpackConfig = {
         test: /.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('demo')]
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        include: [resolve('src')]
       }
     ]
   },

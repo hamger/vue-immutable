@@ -14,7 +14,7 @@ var webpackConfig = {
   },
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ['.js'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src')
@@ -39,11 +39,6 @@ var webpackConfig = {
         test: /.js$/,
         loaders: ['babel-loader'],
         include: [resolve('src'), resolve('demo')]
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        include: [resolve('src')]
       },
       {
         test: /.css$/,
