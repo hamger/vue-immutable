@@ -4,7 +4,7 @@ vue-immutable 需要实现三点：
 2. immutable 数据跳过 vue 的观察机制
 3. immutable 数据可以被全局共享
 
-## 实现前两点
+### 实现前两点
 
 我们知道 vue 的 template 中的 this 指向 vue 实例，因此只要将 immutable 数据挂在 vue 实例上，就可以实现在模板中访问到 immutable 数据。
 
@@ -39,7 +39,7 @@ if (immutable) this[map] = immutable;
 
 此后就可以使用`map.key`代替`$options.immutable.key`了。
 
-## 实现第三点
+### 实现第三点
 
 然后我们来实现第三点，这里可以采用 Vuex 中的思路，将子实例的`map`属性指向父实例的`map`属性即可，需要拓展在`beforeCreate`中混入的操作：
 
