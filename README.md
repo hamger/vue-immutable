@@ -1,6 +1,6 @@
 # vue-immutable
 
-A immutable data plugin for Vue.js
+A global immutable data plugin for Vue.js
 
 ## Meaning
 

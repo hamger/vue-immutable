@@ -1,6 +1,6 @@
 # vue-immutable <small>0.2.0</small>
 
-> A immutable data plugin for Vue.js.
+> A global immutable data plugin for Vue.js.
 
 * simple and lightweight
 * optimize for immutable data in Vue.js
