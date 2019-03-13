@@ -2,9 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App.vue'
-import vueImmutable from '@'
+import VueImmutable from '@'
 
-Vue.use(vueImmutable, {
+Vue.use(VueImmutable, {
   immutable: '$i'
 })
 

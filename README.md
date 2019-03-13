@@ -20,9 +20,9 @@ A global immutable data plugin for Vue.js
 // main.js
 import Vue from "vue";
 import App from "./App.vue";
-import vueImmutable from "vue-immutable";
+import VueImmutable from "vue-immutable";
 
-Vue.use(vueImmutable);
+Vue.use(VueImmutable);
 
 new Vue({
   el: "#app",
@@ -63,7 +63,7 @@ npm run test
 
 ### 2019.3.14
 
-> v0.2.1 修复打包错误
+> v0.2.2 修复打包错误
 
 ### 2019.3.13
 

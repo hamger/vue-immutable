@@ -2,10 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App.vue'
-// import vueImmutable from '../../dist/vue-immutable.min.js'
-// import vueImmutable from '@'
+// import VueImmutable from '../../dist/vue-immutable.min.js'
+// import VueImmutable from '@'
 
-Vue.use(window.vueImmutable)
+Vue.use(window.VueImmutable)
 
 /* eslint-disable no-new */
 new Vue({

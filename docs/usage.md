@@ -4,9 +4,9 @@ vue-immutable 作为 vue 插件，使用方式和其他插件一致：
 
 ```js
 import Vue from "vue";
-import vueImmutable from "vue-immutable";
+import VueImmutable from "vue-immutable";
 var options = { immutable: "$i" };
-Vue.use(vueImmutable, options);
+Vue.use(VueImmutable, options);
 
 new Vue({
   el: "#app",

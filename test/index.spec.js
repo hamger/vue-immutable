@@ -1,10 +1,10 @@
 
 import Vue from 'vue'
-import vueImmutable from '../src'
+import VueImmutable from '../src'
 
 describe('mixin', () => {
   it('support map and function ', () => {
-    Vue.use(vueImmutable, {immutable: 'i'})
+    Vue.use(VueImmutable, {immutable: 'i'})
     const vm = new Vue({
       immutable: {
         msg: 'hello',

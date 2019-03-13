@@ -8,7 +8,7 @@ var webpackConfig = {
   output: {
     filename: 'vue-immutable.min.js',
     path: path.resolve(__dirname, '../dist'),
-    library: 'vueImmutable',
+    library: 'VueImmutable',
     libraryTarget: 'umd', // 采用通用模块定义
     libraryExport: 'default', // 兼容 ES6(ES2015) 的模块系统、CommonJS 和 AMD 模块规范
   },
