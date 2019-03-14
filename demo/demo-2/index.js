@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App.vue'
 // import VueImmutable from '../../dist/vue-immutable.min.js'
 // import VueImmutable from '@'
+const VueImmutable = require('../../dist/vue-immutable.min.js')
 
-Vue.use(window.VueImmutable)
+Vue.use(VueImmutable)
 
 /* eslint-disable no-new */
 new Vue({
