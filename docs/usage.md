@@ -40,7 +40,7 @@ options 是一个对象，选填，接受如下属性：
 ```
 
 ### 使用场景
-项目中需要使用全局的不可变数据，此时很适合使用 vue-immutable 。vue-immutable 只支持全局数据，不支持局部数据的原因是 Vue 已经提供了`provide/inject`，可以用来共享局部数据。
+项目中需要使用全局的不可变数据，此时很适合使用 vue-immutable 。
 你还可以将全局函数注册在 immutable 数据中：
 ```js
 // main.js
