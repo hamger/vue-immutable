@@ -10,7 +10,7 @@ A global immutable data plugin for Vue.js
 
 ## Install
 
-使用 npm 安装： `npm install vue-immutable`
+使用 npm 安装： `npm install --save vue-immutable`
 
 使用 yarn 安装： `yarn add vue-immutable`
 
