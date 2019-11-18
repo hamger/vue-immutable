@@ -1,6 +1,6 @@
 ### 诞生场景
 
-数据展示的时候，考虑某些数据不存在的情况，需要展示一个默认的文本，且这个默认的文本在所有组件中都是一致的，你可能会这么写。
+数据展示的时候，考虑某些数据不存在的情况，需要展示一个默认的文本（例如，无数据时的代替文案、日期格式化函数等等），且这个默认的文本在所有组件中都是一致的，你可能会这么写。
 
 ```js
 // a.js
@@ -71,7 +71,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueImmutable from "vue-immutable";
 
-Vue.use(VueImmutable);
+Vue.use(VueImmutable, { immutable: "$i" });
 
 new Vue({
   el: "#app",
@@ -88,7 +88,7 @@ new Vue({
   <div id="app">
     <ul>
       <li v-for="item in list" :key="item.id">
-        {{ item.name }} 的年龄为 {{ item.age || $immutable.nothing }}
+        {{ item.name }} 的年龄为 {{ item.age || $i.nothing }}
       </li>
     </ul>
   </div>
